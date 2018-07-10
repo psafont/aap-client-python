@@ -11,7 +11,8 @@ with io.open(path.join(HERE, 'README.rst'), encoding='utf-8') as f:
 INSTALL_DEPS = ['pyjwt[crypto]>=1.5.2',
                 'future>=0.16.0']
 FLASK_DEPS = ['flask>=0.12.2']
-DEV_DEPS = FLASK_DEPS
+CLIENT_DEPS = ['requests>=2.19.1']
+DEV_DEPS = FLASK_DEPS + CLIENT_DEPS
 TEST_DEPS = ['pytest',
              'pytest-cov',
              'python-testdata-tsi>=0.2.0.1'] + DEV_DEPS
@@ -77,6 +78,7 @@ setup(
     extras_require={
         'dev': DEV_DEPS,
         'flask': FLASK_DEPS,
+        'client': CLIENT_DEPS,
         'test': TEST_DEPS,
         'docs': DOCS_DEPS,
         'lint': LINT_DEPS

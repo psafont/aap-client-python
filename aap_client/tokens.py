@@ -3,7 +3,11 @@ Classes and functions that encode, decode and verify JWT tokens
 
 Encoded means encoded using base64, decoded tokens are json files
 """
-from jwt import decode, MissingRequiredClaimError
+from jwt import (
+    decode,
+    InvalidTokenError,
+    MissingRequiredClaimError
+)
 
 from aap_client.public_keys import load_from_pem, load_from_der
 
@@ -40,6 +44,15 @@ class TokenDecoder(object):  # pylint: disable=too-few-public-methods
         """ Decodes and verifies a token using a determined audience"""
         return verify_token(serialized_token, self._key,
                             required_claims=self._required_claims)
+
+    def token_is_valid(self, serialized_token):
+        """ Returns whether a serialized token is valid"""
+        try:
+            verify_token(serialized_token, self._key,
+                         required_claims=self._required_claims)
+            return True
+        except InvalidTokenError:
+            return False
 
 
 def verify_token(serialized_token, public_key,
