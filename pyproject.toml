@@ -1,6 +1,6 @@
 [tool.poetry]
 name = 'aap-client'
-version = 'v1.0.0b1'
+version = "1.0.0-beta.2"
 description = 'AAP Client'
 authors = ['Pau Ruiz i Safont <psafont@ebi.ac.uk>']
 license = 'Apache-2.0'
