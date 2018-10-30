@@ -2,7 +2,7 @@ from pkg_resources import get_distribution
 
 # -- Project information -----------------------------------------------------
 
-project = 'aap-client-python'
+project = 'aap-client'
 copyright = '2018, EMBL-EBI'
 author = 'EMBL-EBI'
 
